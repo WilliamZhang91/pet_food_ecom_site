@@ -1,0 +1,43 @@
+.animals {
+    width: 95%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 80px auto;
+    flex-wrap: wrap;
+}
+
+.animal {
+    width: 112px;
+    height: 112px;
+    left: 109px;
+    top: 687px;
+    background: #FFAA5C;
+    border: none;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    
+}
+
+.animal:hover {
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.icon {
+    margin: auto;
+    font-size: 50px;
+}
+
+.icon2 {
+    margin: 10px auto 0 auto;
+    font-size: 50px;
+}

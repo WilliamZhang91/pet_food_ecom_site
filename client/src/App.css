@@ -1,0 +1,10 @@
+.App {
+  width: 100%;
+  overflow-x: "hidden";
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Galindo&display=swap');
+
+body {
+  font-family:'Galindo', cursive;
+}
