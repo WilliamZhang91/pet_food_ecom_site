@@ -1,0 +1,26 @@
+.layout {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content:space-evenly;
+    margin: 100px auto 120px auto;
+}
+
+.img {
+    border: 5px solid #FFAA5C;
+    border-radius: 10px;
+    height: 548px;
+    width: 433px;
+}
+
+.brand {
+    font-size: 80px;
+}
+
+.name {
+    font-size: 40px;
+}
+
+.price {
+    font-size: 20px;
+}

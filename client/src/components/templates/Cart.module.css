@@ -17,12 +17,13 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    width: 1227px;
-    height: 540px;
+    width: 60%;
+    height: 50%;
     background-color: #F0F0F0;
     z-index: 1000;
     top: 25vh;
-    left: 20vw;
+    left: 10vw;
+    right: 10vw;
     padding: 0 0 20px 0;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -68,8 +69,14 @@
   margin: 15px 0;
 }
 
-.remove {
-  margin: 0 30px;
+.removeButton {
+  margin: 10px 0px;
+}
+
+.operatorButton {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
 }
 
 /* width */

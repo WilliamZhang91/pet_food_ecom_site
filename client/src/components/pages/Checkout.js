@@ -5,16 +5,17 @@ import styles from "./Products.module.css"
 export const Checkout = () => {
 
     const cart = useSelector(state => state.cart.cart);
-    console.log(cart)
+    console.log(cart);
     const info = useSelector(state => state.login);
     const credentials = JSON.parse(info.info);
-    const customer_id = credentials[0].customer_id;
-    //const product_id = cart[0].id
-    //const quantity = cart[0].quantity
-    const product_id = cart.map(item => item.id);
-    console.log(product_id)
+    console.log(credentials);
+    const customer_id = credentials.map(cred => cred.id)
+    console.log(customer_id);
+    const product_id = cart.map(item => item.id)
+    console.log(cart.id);
+    console.log(product_id);
     const quantity = cart.map(item => item.quantity);
-    console.log(quantity)
+    console.log(quantity);
 
     const postPurchase = () => {
         Axios.post("http://localhost:4000/purch/cart", {
@@ -22,14 +23,15 @@ export const Checkout = () => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            customer_id: customer_id,
-            product_id: product_id,
-            //quantity: quantity
+            customer_id: 1,
+            product_id: cart,
+            quantity: cart
         })
             .then(res => {
-                console.log(res)
+                console.log(res);
+                //const array = JSON.parse(res.config.data).detail
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     };
 
     return <div className={styles.layout}>

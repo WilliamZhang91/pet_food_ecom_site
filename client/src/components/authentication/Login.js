@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../templates/Cart.module.css";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,11 +16,9 @@ export const Login = () => {
         dispatch(loginActions.toggleLoginModal())
     };
 
-    //console.log(process.env.REACT_APP_URL)
-
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:4000/auth/login", {
+        await Axios.post("http://localhost:4000/auth/login", {
             email: email,
             password: password,
         })
@@ -28,11 +26,15 @@ export const Login = () => {
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("info", JSON.stringify(res.data.response));
                 dispatch(loginActions.verifyLoginHandler({
-                    token: res.data.token,
-                    info: res.data.response,
+                    token:  localStorage.getItem("token"),
+                    info: localStorage.getItem("info"),
                 }))
             }).catch(err => console.log(err))
     };
+
+    useEffect(() => {
+        handleLogin();
+    }, []);
 
     return ReactDOM.createPortal(
         <>

@@ -21,10 +21,6 @@ const loginSlice = createSlice({
             state.token = action.payload.token;
             state.info = action.payload.info;
         },
-        logout(state) {
-            state.token = "";
-            state.info = ""
-        }
     },
 });
 

@@ -8,17 +8,24 @@ export const IndividualProduct = () => {
     const id = +params.product_id;
     const { products } = useSelector(state => state.products);
     const filter = products.filter(product => product.product_id === id);
-    
+
     return <>
-    <div>
-        {filter.map((item, index) => {
-            return <div key={index}>
-                <img src={item.image}></img>
-                <div>{item.brand}</div>
-                <div>{item.name}</div>
-                <div>${item.price}.00</div>
-            </div>
-        })}
+        <div>
+            {filter.map((item, index) => {
+                return <div>
+                    <div className={styles.layout} key={index}>
+                        <img className={styles.img} src={item.image}></img>
+                        <div className={styles.description}>
+                            <div>
+                                <div className={styles.brand}>{item.brand}</div>
+                                <div className={styles.name}>{item.name}</div>
+                            </div>
+                            <div className={styles.price}>${item.price}.00</div>
+                            <button>Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            })}
         </div>
     </>
 }

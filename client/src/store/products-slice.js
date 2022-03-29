@@ -1,11 +1,11 @@
 import Axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import React, {useEffect} from "react"
+import React, { useEffect } from "react"
 
 export const getProducts = createAsyncThunk(
     "products/getProducts",
     async () => {
-        return await Axios.get("http://localhost:4000/dog")
+        return await Axios.get("http://localhost:4000/products")
             .then(response => {
                 return response.data
             })

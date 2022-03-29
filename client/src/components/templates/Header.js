@@ -86,7 +86,7 @@ export const Header = () => {
                 </div>
             </div>
             <div className={styles.header2}>
-                <img src="puppy.png"></img>
+                <img className={styles.img} src="puppy.png"></img>
                 <div className={styles.title}>
                     <p className={styles.heading_font}>Anything and Everything your pet needs</p>
                     <input type="search" className={styles.search}></input>

@@ -24,27 +24,76 @@ export const AnimalIcons = () => {
     return <>
         <div className={styles.animals}>
             <Link to={`products`} className={styles.link}>
-                <button className={styles.animal} name="dog" value="dog" onClick={(e) => selectCategory(e)}>
-                   <img src="dogicon.png" alt="dog" value="dog" onClick={(e) => selectCategory(e)}></img>
+                <button
+                    className={styles.animal}
+                    name="dog"
+                    value="dog"
+                    onClick={(e) => selectCategory(e)}
+                >
+                    <img className={styles.img} src="dogicon.png" alt="dog" value="dog" onClick={(e) => selectCategory(e)}></img>
                 </button>
             </Link>
             <Link to={`products`} className={styles.link}>
-                <button className={styles.animal} alt="cat" name="cat" value="cat" onClick={(e) => selectCategory(e)}>CAT FOOD</button>
+                <button
+                    className={styles.animal}
+                    alt="cat"
+                    name="cat"
+                    value="cat"
+                    onClick={(e) => selectCategory(e)}
+                >
+                    <img className={styles.img} src="caticon.png" />
+                </button>
             </Link>
             <Link to={`products`} className={styles.link}>
-                <button className={styles.animal} alt="bird" name="bird" value="bird" onClick={(e) => selectCategory(e)}>BIRD FOOD</button>
+                <button
+                    className={styles.animal}
+                    alt="bird" name="bird"
+                    value="bird"
+                    onClick={(e) => selectCategory(e)}
+                >
+                    <img className={styles.img} src="birdicon.png" />
+                </button>
             </Link>
             <Link to={`products`} className={styles.link}>
-                <button className={styles.animal} alt="rabbit" name="rabbit" value="rabbit" onClick={(e) => selectCategory(e)}>RABBIT FOOD</button>
+                <button
+                    className={styles.animal}
+                    alt="rabbit" name="rabbit"
+                    value="rabbit"
+                    onClick={(e) => selectCategory(e)}
+                >
+                    <img className={styles.img} src="rabbiticon.png" />
+                </button>
             </Link>
             <Link to={`products`} className={styles.link}>
-                <button className={styles.animal} alt="fish" name="fish" value="fish" onClick={(e) => selectCategory(e)}>FISH FOOD</button>
+                <button
+                    className={styles.animal}
+                    alt="fish"
+                    name="fish"
+                    value="fish"
+                    onClick={(e) => selectCategory(e)}
+                >
+                    <img className={styles.img} src="fishicon.png" />
+                </button>
             </Link>
             <Link to={`products`} className={styles.link}>
-                <button className={styles.animal} alt="turtle" name="turtle" value="turtle" onClick={(e) => selectCategory(e)}>AMPHIBIAN FOOD</button>
+                <button
+                    className={styles.animal}
+                    alt="turtle" name="turtle"
+                    value="turtle"
+                    onClick={(e) => selectCategory(e)}
+                >
+                    <img className={styles.img} src="turtleicon.png" />
+                </button>
             </Link>
             <Link to={`products`} className={styles.link}>
-                <button className={styles.animal} alt="horse" name="horse" value="horse" onClick={(e) => selectCategory(e)}>HORSE</button>
+                <button
+                    className={styles.animal}
+                    alt="horse" name="horse"
+                    value="horse"
+                    onClick={(e) => selectCategory(e)}
+                >
+                    <img className={styles.img} src="horseicon.png" />
+                </button>
             </Link>
         </div>
     </>
