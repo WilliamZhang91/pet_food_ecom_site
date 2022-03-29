@@ -6,6 +6,7 @@ const app = express();
 const mysql = require("mysql2");
 const auth = require("./routes/auth");
 const purch = require("./routes/purch");
+const categories = require("./routes/categories");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -25,7 +26,7 @@ db.connect(function (err) {
     }
 });
 
-app.get("/dog", (req, res) => {
+app.get("/products", (req, res) => {
     db.query("SELECT * FROM dog_food", (err, result) => {
         res.send(result)
     });
@@ -34,5 +35,7 @@ app.get("/dog", (req, res) => {
 app.use("/auth", auth); //auth = auth
 
 app.use("/purch", purch);
+
+app.use("/category", categories);
 
 app.listen(process.env.PORT);
