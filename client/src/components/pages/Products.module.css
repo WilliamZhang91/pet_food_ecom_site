@@ -26,6 +26,7 @@ label {
 
 .flex {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .margin {
@@ -114,4 +115,8 @@ button {
 
 .flex {
     display:flex;
+}
+
+.customer {
+    text-align: center;
 }

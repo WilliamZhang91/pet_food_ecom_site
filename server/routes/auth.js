@@ -47,10 +47,10 @@ router.post("/signup", [
             } else {
                 console.log("sign up passed");
                 console.log(token)
-                return res.json({ 
+                return res.json({
                     token,
                     response,
-                 })
+                })
             }
         });
     }
@@ -63,7 +63,11 @@ router.post("/login", async (req, res) => {
     }, "use_env_to_hide_secret", {
         expiresIn: 36000
     });
-    db.query("SELECT * FROM credentials Where email =?", [req.body.email], function (error, response) {
+    db.query("SELECT * FROM credentials Where email =?", [req.body.email], (error, response) => {
+        //if (error) {
+        //    console.log(error)
+        //} 
+        //else {
         if (error) {
             console.log(error)
         } else {
@@ -76,11 +80,22 @@ router.post("/login", async (req, res) => {
                     response,
                 });
             } else {
-                console.log("login failed")
+                console.log(error)
             }
         }
+        //if (passwordCheck) {
+        //    console.log("login passed");
+        //    console.log(response);
+        //    return res.json({
+        //        token,
+        //        response,
+        //    });
+        //} else {
+        //    console.log(error)
+        //}
+        //}
     });
-    
+
 });
 
 module.exports = router

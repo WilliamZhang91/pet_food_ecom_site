@@ -11,6 +11,10 @@ export const Login = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState({
+        incorrectPassword: false,
+        message: ""
+    })
 
     const toggleLoginModal = () => {
         dispatch(loginActions.toggleLoginModal())
@@ -29,7 +33,13 @@ export const Login = () => {
                     token:  localStorage.getItem("token"),
                     info: localStorage.getItem("info"),
                 }))
-            }).catch(err => console.log(err))
+            }).catch(err => {
+                console.log(err), 
+                setErrorMessage({
+                    incorrectPassword: true,
+                    message: "Incorrect Username/Password. Please try again."
+                })
+            })
     };
 
     useEffect(() => {
@@ -62,6 +72,7 @@ export const Login = () => {
                             />
                             <button>SUBMIT</button>
                         </form>
+                        {errorMessage.incorrectPassword ? <div>{errorMessage.message}</div> : null}
                     </div>
                 </div>
             </div>

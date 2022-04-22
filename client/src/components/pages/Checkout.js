@@ -23,7 +23,7 @@ export const Checkout = () => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            customer_id: 1,
+            customer_id: credentials[0].customer_id,
             product_id: cart,
             quantity: cart
         })
