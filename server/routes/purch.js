@@ -5,13 +5,8 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-});
+const config = require("../config");
+const db = mysql.createConnection(config);
 
 //add purchases into db
 router.post("/cart", (req, res) => {

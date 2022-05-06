@@ -30,16 +30,16 @@ export const Login = () => {
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("info", JSON.stringify(res.data.response));
                 dispatch(loginActions.verifyLoginHandler({
-                    token:  localStorage.getItem("token"),
+                    token: localStorage.getItem("token"),
                     info: localStorage.getItem("info"),
                 }))
             }).catch(err => {
-                console.log(err), 
+                console.log(err);
                 setErrorMessage({
                     incorrectPassword: true,
                     message: "Incorrect Username/Password. Please try again."
-                })
-            })
+                });
+            });
     };
 
     useEffect(() => {

@@ -1,6 +1,6 @@
 import styles from "./Products.module.css";
 import { ProductsPage } from "./ProductsPage";
-import { useSelector } from "react-redux";
+import { useSelector } from "react-redux"; 
 
 export const Products = () => {
 

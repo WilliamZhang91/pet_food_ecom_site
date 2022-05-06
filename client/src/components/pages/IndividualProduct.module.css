@@ -1,8 +1,7 @@
 .layout {
     width: 70%;
-    margin: auto;
     display: flex;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     margin: 100px auto 120px auto;
 }
 
@@ -10,7 +9,7 @@
     border: 5px solid #FFAA5C;
     border-radius: 10px;
     height: 548px;
-    width: 433px;
+    width: auto;
 }
 
 .brand {
@@ -23,4 +22,99 @@
 
 .price {
     font-size: 20px;
+}
+
+@media (max-width: 1440px) {
+    .layout {
+        margin: 130px auto 130px auto;
+    }
+
+    .img {
+        height: 450px;
+        width: auto;
+    }
+}
+
+@media (max-width: 1150px) {
+    .layout {
+        margin: 130px auto 130px auto;
+    }
+    
+    .img {
+        height: 450px;
+        width: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .layout {
+        margin: 130px auto 130px auto;
+    }
+
+    .img {
+        height: 425px;
+        width: auto;
+    }
+
+    .brand {
+        font-size: 40px;
+    }
+
+    .name {
+        font-size: 25px;
+    }
+
+    .price {
+        font-size: 10px
+    }
+}
+
+@media (max-width: 700px) {
+    .img {
+        height: 400px;
+        width: auto;
+    }
+    
+    .layout {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 700px) {
+    .img {
+        height: 375px;
+        width: auto;
+    }
+}
+
+@media (max-width: 692px) {
+    .img {
+        height: 350px;
+        width: auto;
+    }
+}
+
+@media (max-width: 662px) {
+    .img {
+        height: 325px;
+        width: auto;
+    }
+
+    .layout {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 414px) {
+    .img {
+        height: 270px;
+        width: auto;
+    }
+}
+
+@media (max-width: 375px) {
+    .img {
+        height: 240px;
+        width: auto;
+    }
 }

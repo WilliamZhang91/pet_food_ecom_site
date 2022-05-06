@@ -1,29 +1,22 @@
 const router = require("express").Router();
 const express = require("express");
-const { check, validationResult } = require("express-validator");
-const bcrypt = require("bcrypt");
 const mysql = require("mysql2");
-const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const app = express();
-require("dotenv").config();
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-});
+const config = require("../config");
 
 app.use(bodyParser.json());
 
-router.get("/products/dog", (req, res) => {
-    db.query("SELECT * FROM dog_food WHERE animal = dog", (err, result) => {
+const db = mysql.createConnection(config)
+
+router.get("/dog", (req, res) => {
+    db.query("SELECT * FROM dog_food WHERE animal = 'dog'", (err, result) => {
         res.send(result);
     });
 });
 
-router.get("/products/cat", (req, res) => {
-    db.query("SELECT * FROM dog_food WHERE animal = cat", (err, result) => {
+router.get("/cat", (req, res) => {
+    db.query("SELECT * FROM dog_food WHERE animal = 'cat'", (err, result) => {
         res.send(result);
     });
 });

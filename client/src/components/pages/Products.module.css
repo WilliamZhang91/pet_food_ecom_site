@@ -8,7 +8,7 @@
 
 .layout {
     width: 80%;
-    margin: 150px auto 150px auto;;
+    margin: 150px auto 150px auto;
 }
 
 .filter {
@@ -42,7 +42,7 @@ label {
 
 .filter {
     width:100%;
-    margin: auto 60px auto 0;
+    margin: 20px 60px auto 0;
     padding: 10px;
     text-decoration: underline;
 }
@@ -51,11 +51,6 @@ label {
     border: 1px solid gray;
     display: flex;
     justify-content: space-around;
-}
-
-.title {
-    width: 100%;
-    margin: 50px auto;
 }
 
 .product {
@@ -67,7 +62,7 @@ label {
 }
 
 .product1 {
-    margin: 20px 0;
+    margin: 20px 10px;
 }
 
 .product2 {
@@ -120,3 +115,29 @@ button {
 .customer {
     text-align: center;
 }
+
+@media (max-width: 692px) {
+    .filter {
+        font-size: 12px;
+    }
+
+    .image {
+        width: 150px;
+        height: 177px;
+    }
+
+    .products {
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 414px) {
+    .filter {
+        font-size: 10px;
+    }
+
+    .image {
+
+    }
+}
+

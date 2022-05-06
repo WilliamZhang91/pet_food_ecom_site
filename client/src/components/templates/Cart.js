@@ -14,8 +14,8 @@ export const Cart = () => {
     let totalPrice = null
     price = cart.map((item) => item.price * item.quantity);
     totalPrice = price.reduce((prevAmount, currentAmount) => {
-        return prevAmount + currentAmount;
-    });
+        return prevAmount + currentAmount
+    }, []);
     const toggleCart = () => {
         dispatch(cartActions.toggleCart());
     };
@@ -85,5 +85,5 @@ export const Cart = () => {
             </div>
         </>,
         document.getElementById("portal")
-    )
-}
+    );
+};

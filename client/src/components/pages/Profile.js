@@ -1,4 +1,5 @@
 import styles from "./Products.module.css";
+import { Link } from "react-router-dom";
 import { PurchaseHistory } from "./purchaseHistory";
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
@@ -42,6 +43,9 @@ export const Profile = () => {
             <div className={styles.customer}>
                 <h2>{JSON.parse(loginDetails.info)[0].name.replace(/\b\w/g, l => l.toUpperCase())}</h2>
                 <h3>{JSON.parse(loginDetails.info)[0].email}</h3>
+                <Link to="/account-details">
+                    <button>Manage Account</button>
+                </Link>
                 <div className={styles.flex}>
                     <h3 className={styles.title}>Purchase History</h3>
                     {purchaseHistory && purchaseHistory.map((item, index) => {

@@ -10,14 +10,16 @@ import { Login } from './components/authentication/Login';
 import { Register } from './components/authentication/Register';
 import { Profile } from './components/pages/Profile';
 import { Checkout } from './components/pages/Checkout';
-import { Route, Routes } from "react-router-dom";
+import { AccountDetails } from './components/pages/AccountDetails';
+import { Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 function App() {
 
   const showCart = useSelector(state => state.cart.showCart);
-  const showLoginModal = useSelector(state => state.login.showLoginModal)
-  const showRegisterModal = useSelector(state => state.login.showRegisterModal)
+  const showLoginModal = useSelector(state => state.login.showLoginModal);
+  const showRegisterModal = useSelector(state => state.login.showRegisterModal);
+  const { products } = useSelector(state => state.products);
 
   return <div className="App">
     <Header />
@@ -28,10 +30,17 @@ function App() {
     <main>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="products" element={<Products />} />
+        <Route
+          path="products"
+          element={
+            products.length !== 0 ?
+              (<Products />) : (<Navigate replace to="/" />)
+          }
+        />
         <Route path="products/:pet/:product_id" element={<IndividualProduct />} />
         <Route path="profile/:id" element={<Profile />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path="account-details" element={<AccountDetails/>} />
       </Routes>
     </main>
     <Footer />

@@ -1,20 +1,17 @@
 const router = require("express").Router();
 const express = require("express");
+const app = express();
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
-const app = express();
-require("dotenv").config();
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-});
-
 app.use(bodyParser.json());
+require("dotenv").config();
+const config = require("../config");
+console.log(config)
+
+const db = mysql.createConnection(config)
 
 router.post("/signup", [
     check("email", "Email is invalid")
