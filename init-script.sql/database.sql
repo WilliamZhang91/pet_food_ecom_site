@@ -1,4 +1,4 @@
-CREATE DATABASE pet_food;
+--CREATE DATABASE pet_food;
 
 CREATE TABLE pet_food.dog_food (
   product_id int NOT NULL,
@@ -62,6 +62,8 @@ CREATE TABLE pet_food.purchases (
   CONSTRAINT purchases_ibfk_2 FOREIGN KEY (product_id) REFERENCES dog_food (product_id)
 );
 
-GRANT ALL ON *.* TO 'user';
+GRANT ALL ON *.* TO 'root';
+--GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+--FLUSH PRIVILEGES;
 
 
