@@ -62,23 +62,18 @@ export const Cart = () => {
                         {
                             cart.length > 0
                                 ?
-                                <p className={styles.total}>
-                                    Total Price: ${totalPrice}.00
-                                </p>
+                                <>
+                                    <Link to="/checkout">
+                                        <button>
+                                            Proceed to Checkout
+                                        </button>
+                                    </Link>
+                                    <p className={styles.total}>
+                                        Total Price: ${totalPrice}.00
+                                    </p>
+                                </>
                                 :
-                                <p>Cart Empty</p>}
-                        {
-                            cart.length > 0 && isLoggedIn
-                                ?
-                                <Link to="/checkout">
-                                    <button>
-                                        Proceed to Checkout
-                                    </button>
-                                </Link>
-                                :
-                                <button>
-                                    Sign In
-                                </button>
+                                <p>Cart Empty</p>
                         }
                     </div>
                 </div>

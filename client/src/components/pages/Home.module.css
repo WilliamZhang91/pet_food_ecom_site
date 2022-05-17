@@ -1,8 +1,32 @@
+.margin {
+    margin: 150px auto;
+}
+
 .home {
-    width: 100%;
+    width: 70%;
     display: flex;
-    justify-content: space-evenly;
-    margin: 80px auto;
+    justify-content: space-between;
+    margin: 40px auto;
     flex-wrap: wrap;
 }
 
+.img {
+    width: 650px;
+    height: auto;
+}
+
+.left {
+    width: 340px;
+    height: 457px;
+    background: #F7F5F5;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.right {
+    width: 925px;
+    height: 453px;
+    background: #F7F5F5;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}

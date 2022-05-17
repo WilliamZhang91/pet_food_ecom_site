@@ -15,10 +15,12 @@ services:
     #command: --init-file /data/application/init.sql
     volumes:
       #- ./init.sql:/data/application/init.sql
-      - ./init-script.sql:/docker-entrypoint-initdb.d/
+      #- ./dbscript:/docker-entrypoint-initdb.d/init.sql:rw
       #- db:/var/lib/mysql
       #- /home/user/db/mysql/data:/var/lib/mysql
       #- /home/user/db/mysql/init:/docker-entrypoint-initdb.d/:ro
+      - "./scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
+      - "./scripts/data.sql:/docker-entrypoint-initdb.d/2.sql"
   ###################################
   api-server:
     depends_on:
@@ -45,5 +47,5 @@ services:
     ports:
       - '3000:3000'
 
-#volumes: 
-  #db:
+volumes: 
+  db:

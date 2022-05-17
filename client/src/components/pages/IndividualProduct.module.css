@@ -6,7 +6,7 @@
 }
 
 .img {
-    border: 5px solid #FFAA5C;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     height: 548px;
     width: auto;

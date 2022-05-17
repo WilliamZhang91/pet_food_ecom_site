@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginActions } from "../../store/login-slice";
 import Axios from "axios";
 
-
 export const Login = () => {
 
     const dispatch = useDispatch();
@@ -13,8 +12,9 @@ export const Login = () => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState({
         incorrectPassword: false,
-        message: ""
-    })
+        message: "",
+        passwordReset: "",
+    });
 
     const toggleLoginModal = () => {
         dispatch(loginActions.toggleLoginModal())
@@ -37,7 +37,8 @@ export const Login = () => {
                 console.log(err);
                 setErrorMessage({
                     incorrectPassword: true,
-                    message: "Incorrect Username/Password. Please try again."
+                    message: "Incorrect Username/Password. Please try again.",
+                    passwordReset: "Reset your password?"
                 });
             });
     };
@@ -72,7 +73,20 @@ export const Login = () => {
                             />
                             <button>SUBMIT</button>
                         </form>
-                        {errorMessage.incorrectPassword ? <div>{errorMessage.message}</div> : null}
+                        {
+                            errorMessage.incorrectPassword
+                                ?
+                                <div>
+                                    <div>
+                                        {errorMessage.message}
+                                    </div>
+                                    <div>
+                                        {errorMessage.passwordReset}    
+                                    </div>
+                                </div>
+                                :
+                                null
+                        }
                     </div>
                 </div>
             </div>

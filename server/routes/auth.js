@@ -6,12 +6,20 @@ const bcrypt = require("bcrypt");
 const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
 app.use(bodyParser.json());
 require("dotenv").config();
 const config = require("../config");
-console.log(config)
 
-const db = mysql.createConnection(config)
+const db = mysql.createConnection({
+    host: config.host,
+    user: config.user,
+    password: config.password,
+    database: config.database,
+    multipleStatements: true
+});
+
+let array = [];
 
 router.post("/signup", [
     check("email", "Email is invalid")
@@ -28,7 +36,6 @@ router.post("/signup", [
     }, "use_env_to_hide_secret", {
         expiresIn: 36000
     });
-
     if (!errors.isEmpty()) {
         return res.status(400).json({
             errors: errors.array()
@@ -47,10 +54,10 @@ router.post("/signup", [
                 return res.json({
                     token,
                     response,
-                })
-            }
+                });
+            };
         });
-    }
+    };
 });
 
 router.post("/login", async (req, res) => {
@@ -60,39 +67,49 @@ router.post("/login", async (req, res) => {
     }, "use_env_to_hide_secret", {
         expiresIn: 36000
     });
-    db.query("SELECT * FROM credentials Where email =?", [req.body.email], (error, response) => {
-        //if (error) {
-        //    console.log(error)
-        //} 
-        //else {
+    db.query("SELECT * FROM credentials WHERE email=?", [req.body.email], (error, response) => {
         if (error) {
-            console.log(error)
+            (error)
         } else {
+            array = [];
             const passwordCheck = bcrypt.compareSync(plainPassword, response[0].password)
             if (passwordCheck) {
-                console.log("login passed");
-                console.log(response);
+                console.log(response[0].password);
+                const customer_id = response[0].customer_id
+                //console.log(token)
+                array.push({
+                    customer_id: customer_id,
+                    token: token,
+                    password: response[0].password
+                });
+                console.log(array)
                 return res.json({
                     token,
                     response,
                 });
             } else {
-                console.log(error)
-            }
-        }
-        //if (passwordCheck) {
-        //    console.log("login passed");
-        //    console.log(response);
-        //    return res.json({
-        //        token,
-        //        response,
-        //    });
-        //} else {
-        //    console.log(error)
-        //}
-        //}
+                console.log(error);
+            };
+        };
     });
+});
 
+router.put(`/reset_password`, async (req, res) => {
+    const passwordCheck = bcrypt.compareSync(req.body.current_password, array[0].password);
+    const hashedPassword = bcrypt.hashSync(req.body.new_password, 10);
+    const customer_id = array[0].customer_id;
+    if (passwordCheck) {
+        db.query(`UPDATE credentials SET password = "${hashedPassword}" WHERE customer_id = "${customer_id}"`, (error, response) => {
+            if (error) {
+                console.log(error);
+                res.send("Passwords do not match");
+            } else {
+                res.send(response);
+            };
+        });
+    } else {
+        res.send("Incorrect password");
+    };
 });
 
 module.exports = router

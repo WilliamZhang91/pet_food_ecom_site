@@ -20,7 +20,7 @@ export const Header = () => {
         } else {
             console.log(JSON.parse(localStorage.getItem("info"))[0].name)
             return prevState = JSON.parse(localStorage.getItem("info"))[0].name
-        }
+        };
     });
 
     const toggleCart = () => {
@@ -39,6 +39,10 @@ export const Header = () => {
         setCredentials(localStorage.clear());
         navigate("/");
     };
+
+    useEffect(() => {
+        setCredentials
+    }, [])
 
     useEffect(() => {
         if (showCart) {

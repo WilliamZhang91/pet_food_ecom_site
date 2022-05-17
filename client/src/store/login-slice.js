@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const loginSlice = createSlice({
     name: "login",
     initialState: {
+        showChangePasswordModal: false,
+        showChangeEmailModal: false,
         isLoggedIn: false,
         showLoginModal: false,
         showRegisterModal: false,
@@ -11,10 +13,16 @@ const loginSlice = createSlice({
     },
     reducers: {
         toggleLoginModal(state) {
-            state.showLoginModal = !state.showLoginModal
+            state.showLoginModal = !state.showLoginModal;
         },
         toggleRegisterModal(state) {
-            state.showRegisterModal = !state.showRegisterModal
+            state.showRegisterModal = !state.showRegisterModal;
+        },
+        toggleChangePasswordModal(state) {
+            state.showChangePasswordModal = !state.showChangePasswordModal;
+        },
+        toggleChangeEmailModal(state) {
+            state.showChangeEmailModal =!state.showChangeEmailModal;
         },
         verifyLoginHandler(state, action) {
             state.isLoggedIn = true;

@@ -7,7 +7,7 @@
 }
 
 .layout {
-    width: 80%;
+    width: 70%;
     margin: 150px auto 150px auto;
 }
 
@@ -75,8 +75,8 @@ label {
     height: 260px;
     margin: 20px 0px;
     cursor: pointer;
-    border: 4px solid #FFAA5C;
-    border-radius: 25px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
 }
 
 .space_between {
@@ -114,6 +114,14 @@ button {
 
 .customer {
     text-align: center;
+}
+
+.account_settings {
+    display: flex; 
+    width: 30%; 
+    height: 40px;
+    justify-content: space-between; 
+    margin: 20px 0;
 }
 
 @media (max-width: 692px) {
