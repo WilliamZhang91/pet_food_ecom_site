@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const host = "127.0.0.1";
 
 const config = {
@@ -8,4 +10,4 @@ const config = {
     database: process.env.DATABASE,
 };
 
-module.exports = config
+module.exports = config;

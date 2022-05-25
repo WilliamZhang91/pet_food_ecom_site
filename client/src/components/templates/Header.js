@@ -42,7 +42,7 @@ export const Header = () => {
 
     useEffect(() => {
         setCredentials
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (showCart) {

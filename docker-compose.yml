@@ -2,8 +2,8 @@ version: '3.9'
 
 services:
   mysqldb:
-    image: mysql:5.7
-    restart: unless-stopped
+    build: ./database
+    restart: always
     env_file: ./.env
     environment:
       - MYSQL_ROOT_PASSWORD=$PASSWORD
@@ -14,19 +14,13 @@ services:
       - '3307:3306' 
     #command: --init-file /data/application/init.sql
     volumes:
-      #- ./init.sql:/data/application/init.sql
-      #- ./dbscript:/docker-entrypoint-initdb.d/init.sql:rw
-      #- db:/var/lib/mysql
-      #- /home/user/db/mysql/data:/var/lib/mysql
-      #- /home/user/db/mysql/init:/docker-entrypoint-initdb.d/:ro
-      - "./scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
-      - "./scripts/data.sql:/docker-entrypoint-initdb.d/2.sql"
-  ###################################
+      - db:/var/lib/mysql
+
   api-server:
     depends_on:
       - mysqldb
     build: ./server
-    restart: unless-stopped
+    restart: always
     env_file: ./.env
     ports:
       - '4000:4000' 
@@ -38,7 +32,7 @@ services:
       - DB_PORT=$MYSQLDB_DOCKER_PORT 
     stdin_open: true
     tty: true
-  ####################################
+  
   react-app:
     depends_on:
     - api-server

@@ -81,7 +81,7 @@ export const Login = () => {
                                         {errorMessage.message}
                                     </div>
                                     <div>
-                                        {errorMessage.passwordReset}    
+                                        {errorMessage.passwordReset}
                                     </div>
                                 </div>
                                 :
