@@ -8,14 +8,16 @@ export const Cart = () => {
 
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart.cart);
-    const isLoggedIn = useSelector(state => state.login.isLoggedIn)
+    const isLoggedIn = useSelector(state => state.login.isLoggedIn);
     console.log(isLoggedIn)
     let price = [];
-    let totalPrice = null
+    let totalPrice = null;
     price = cart.map((item) => item.price * item.quantity);
+    
     totalPrice = price.reduce((prevAmount, currentAmount) => {
         return prevAmount + currentAmount
     }, []);
+    
     const toggleCart = () => {
         dispatch(cartActions.toggleCart());
     };
@@ -28,11 +30,13 @@ export const Cart = () => {
                     <div>
                         <h1>YOUR CART</h1>
                         {cart.map(cartItem => {
+                            
                             const removeItemFromCart = () => {
                                 dispatch(cartActions.removeItemFromCart({
                                     product_id: cartItem.id
                                 }));
                             };
+                            
                             const addItemToCart = () => {
                                 dispatch(cartActions.addItemToCart({
                                     product_id: cartItem.id,
@@ -41,7 +45,12 @@ export const Cart = () => {
                                     price: cartItem.price,
                                     image: cartItem.image,
                                 }));
-                            }
+                            };
+
+                            const clearCart = () => {
+                                dispatch(cartActions.clearCart());
+                            };
+
                             return <div key={cartItem.id}>
                                 <img
                                     src={cartItem.image}
@@ -56,7 +65,7 @@ export const Cart = () => {
                                     <button onClick={removeItemFromCart}>-</button>
                                     <button onClick={addItemToCart}>+</button>
                                 </div>
-                                <button className={styles.removeButton}>Remove</button>
+                                <button className={styles.removeButton} onClick={clearCart}>Clear Cart</button>
                             </div>
                         })}
                         {

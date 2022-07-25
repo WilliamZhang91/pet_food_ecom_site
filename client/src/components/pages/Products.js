@@ -1,6 +1,6 @@
 import styles from "./Products.module.css";
 import { ProductsPage } from "./ProductsPage";
-import { useSelector } from "react-redux"; 
+import { useSelector } from "react-redux";
 
 export const Products = () => {
 
@@ -12,21 +12,61 @@ export const Products = () => {
     const health = [...new Set(filterProducts.map(product => product.health_needs))];
     const brand = [...new Set(filterProducts.map(product => product.brand))];
 
+    const selectFilter = (e) => {
+        console.log(e.target.attributes.getNamedItem("id").value)
+    }
+
     return <>
         <div className={styles.layout}>
             <div className={styles.title}>{category.charAt(0).toUpperCase() + category.slice(1)} Food</div>
             <div className={styles.filter}>
                 <div>{type.map(el => {
-                    return <div>{el.toUpperCase()}</div>
+                    return (
+                        <button
+                            id={el}
+                            key={Math.random()}
+                            onClick={(e) => selectFilter(e)}
+                            value={el}
+                            className={styles.filterButton}
+                        >
+                            {el.toUpperCase()}
+                        </button>)
                 })}</div>
                 <div>{age.map(el => {
-                    return <div>{el.toUpperCase()}</div>
+                    return (
+                        <button
+                            id={el}
+                            key={Math.random()}
+                            onClick={(e) => selectFilter(e)}
+                            value={el}
+                            className={styles.filterButton}
+                        >{el.toUpperCase()}
+                        </button>)
                 })}</div>
                 <div>{health.map(el => {
-                    return <div>{el.toUpperCase()}</div>
+                    return (
+                        <button
+                            id={el}
+                            key={Math.random()}
+                            onClick={(e) => selectFilter(e)}
+                            value={el}
+                            className={styles.filterButton}
+                        >
+                            {el.toUpperCase()}
+                        </button>)
                 })}</div>
                 <div>{brand.map(el => {
-                    return <div>{el.toUpperCase()}</div>
+                    return (
+                        <button
+                            id={el}
+                            key={Math.random()}
+                            onClick={(e) => selectFilter(e)}
+                            value={el}
+                            className={styles.filterButton}
+                        >
+                            {el.toUpperCase()}
+                        </button>
+                    )
                 })}</div>
             </div>
             <div className={styles.products}>
@@ -39,10 +79,10 @@ export const Products = () => {
                         </div>
                     )
                 }) : <div>
-                <div className={styles.product1}>
-                    <h1>LOADING...</h1>
-                </div>
-            </div>}
+                    <div className={styles.product1}>
+                        <h1>LOADING...</h1>
+                    </div>
+                </div>}
             </div>
         </div>
     </>

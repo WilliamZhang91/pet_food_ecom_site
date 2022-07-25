@@ -47,6 +47,11 @@
     .animals {
         margin: -50px auto;
     }
+
+    .animal {
+        width: 90px;
+        height: 90px;
+    }
 }
 
 @media (max-width: 1150px) {
@@ -55,8 +60,8 @@
     }
 
     .animal {
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
     }
 
     .img {
@@ -71,8 +76,8 @@
     }
 
     .animal {
-        width: 90px;
-        height: 90px;
+        width: 64px;
+        height: 64px;
         margin-top: 10px;
     }
     
@@ -84,24 +89,26 @@
     }
 
     .animal {
-        width: 80px;
-        height: 80px;
+        width: 64px;
+        height: 64px;
     }
 }
 
-@media (max-width: 662px) {
+@media (max-width: 667px) {
     .animals {
         margin: -400px auto -100px auto;
+        align-content: center;
     }
 
     .animal {
-        width: 70px;
-        height: 70px;
+        background-color: white;
+        box-shadow: none;
     }
 
     .img {
-        Width: 20px;
-        Height: 20px;
+        Width: auto;
+        Height: 35px;
+        color: red
     }
 }
 
@@ -113,11 +120,6 @@
     .animal {
         width: 60px;
         height: 60px;
-    }
-
-    .img {
-        Width: 20px;
-        Height: 20px;
     }
 }
 
@@ -131,8 +133,5 @@
         height: 50px;
     }
 
-    .img {
-        Width: 20px;
-        Height: 20px;
-    }
+
 }

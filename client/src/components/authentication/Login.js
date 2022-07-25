@@ -55,22 +55,26 @@ export const Login = () => {
                     <div className={styles.login}>
                         <h1>LOGIN</h1>
                         <form className={styles.input} onSubmit={handleLogin}>
-                            <input
-                                className={styles.input}
-                                type="email"
-                                name="email"
-                                placeholder="johndoe@email.com"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <input
-                                className={styles.input}
-                                type="password"
-                                name="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
+                            <div>
+                                <input
+                                    className={styles.input}
+                                    type="email"
+                                    name="email"
+                                    placeholder="johndoe@email.com"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    className={styles.input}
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </div>
                             <button>SUBMIT</button>
                         </form>
                         {

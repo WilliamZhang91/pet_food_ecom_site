@@ -34,11 +34,9 @@ const cartSlice = createSlice({
                 existingCartItem.totalPrice = existingCartItem.totalPrice - existingCartItem.price;
             }
         },
-        removeAllFromCart(state, action) {
-
-        },
-        clearCart(state, action) {
-
+        clearCart(state) {
+            state.cart = [];
+            state.totalQuantity = 0;
         },
         toggleCart(state) {
             state.showCart = !state.showCart

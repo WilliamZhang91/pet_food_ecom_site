@@ -1,0 +1,156 @@
+[
+    {
+        "product_id": 1,
+        "brand": "Royal Canin",
+        "category": "dry",
+        "age": "puppy",
+        "health_needs": "immune",
+        "price": 125,
+        "image": "/images/dog_food/royal_canin_puppy_maxi.jpg",
+        "animal": "dog",
+        "name": "Maxi Puppy Dry Food"
+    },
+    {
+        "product_id": 2,
+        "brand": "Black Hawk",
+        "category": "dry",
+        "age": "adult",
+        "health_needs": "digestive",
+        "price": 173,
+        "image": "/images/dog_food/food2.jpg",
+        "animal": "dog",
+        "name": "Original Adult Lamb & Rice Dry Dog Food"
+    },
+    {
+        "product_id": 3,
+        "brand": "Black Hawk",
+        "category": "dry",
+        "age": "puppy",
+        "health_needs": "digestive",
+        "price": 40,
+        "image": "/images/dog_food/food3.png",
+        "animal": "dog",
+        "name": "Original Puppy Lamb & Rice Dry Dog Food"
+    },
+    {
+        "product_id": 4,
+        "brand": "Royal Canin",
+        "category": "dry",
+        "age": "puppy",
+        "health_needs": "digestive",
+        "price": 50,
+        "image": "/images/dog_food/food4.jpg",
+        "animal": "dog",
+        "name": "Medium Puppy Dry Food"
+    },
+    {
+        "product_id": 5,
+        "brand": "Royal Canin",
+        "category": "wet",
+        "age": "adult",
+        "health_needs": "skin",
+        "price": 130,
+        "image": "/images/dog_food/food5.jpg",
+        "animal": "dog",
+        "name": "Labrador RetrieverAdult Dry Dog Food"
+    },
+    {
+        "product_id": 6,
+        "brand": "Royal Canin",
+        "category": "wet",
+        "age": "adult",
+        "health_needs": "digestive",
+        "price": 120,
+        "image": "/images/dog_food/food6.jpg",
+        "animal": "dog",
+        "name": "Medium Adult Dry Dog Food"
+    },
+    {
+        "product_id": 7,
+        "brand": "Royal Canin",
+        "category": "dry",
+        "age": "adult",
+        "health_needs": "immune",
+        "price": 130,
+        "image": "/images/dog_food/food7.jpg",
+        "animal": "dog",
+        "name": "Maxi Adult Dry Dog Food"
+    },
+    {
+        "product_id": 8,
+        "brand": "Black Hawk",
+        "category": "wet",
+        "age": "adult",
+        "health_needs": "digestive",
+        "price": 59,
+        "image": "/images/dog_food/food8.png",
+        "animal": "dog",
+        "name": "Grain Free Adult Salmon Dry Dog Food"
+    },
+    {
+        "product_id": 9,
+        "brand": "Royal Canin",
+        "category": "dry",
+        "age": "puppy",
+        "health_needs": "digestive",
+        "price": 130,
+        "image": "/images/dog_food/food9.jpg",
+        "animal": "dog",
+        "name": "German Shepherd Puppy Dry Food"
+    },
+    {
+        "product_id": 10,
+        "brand": "Royal Canin",
+        "category": "dry",
+        "age": "kitten",
+        "health_needs": "immune",
+        "price": 125,
+        "image": "/images/cat_food/image1.png",
+        "animal": "cat",
+        "name": "Kitten Instinctive in Gravy"
+    },
+    {
+        "product_id": 11,
+        "brand": "Pro Plan",
+        "category": "wet",
+        "age": "adult",
+        "health_needs": "skin",
+        "price": 130,
+        "image": "/images/cat_food/food2.jpg",
+        "animal": "cat",
+        "name": "Indoor Hairball Control Dry + Wet Cat Food Bundle"
+    },
+    {
+        "product_id": 12,
+        "brand": "Black Hawk",
+        "category": "wet",
+        "age": "adult",
+        "health_needs": "immune",
+        "price": 152,
+        "image": "/images/cat_food/food3.jpg",
+        "animal": "cat",
+        "name": "Light Weight Care Dry + Wet Cat Food Bundle"
+    },
+    {
+        "product_id": 13,
+        "brand": "Black Hawk",
+        "category": "dry",
+        "age": "adult",
+        "health_needs": "skin",
+        "price": 58,
+        "image": "/images/dog_food/food10.jpg",
+        "animal": "dog",
+        "name": "Original Adult Large Breed Chicken Dry Dog Food"
+    },
+    {
+        "product_id": 14,
+        "brand": "Black Hawk",
+        "category": "wet",
+        "age": "puppy",
+        "health_needs": "immune",
+        "price": 65,
+        "image": "/images/dog_food/food11.jpg",
+        "animal": "dog",
+        "name": "Original Adult Fish & Potato Dry Dog Food"
+    }
+]
