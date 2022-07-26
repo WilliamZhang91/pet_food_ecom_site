@@ -1,47 +1,21 @@
 import React, { useState, useEffect } from "react";
 import styles from "../templates/Cart.module.css";
 import ReactDOM from "react-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { loginActions } from "../../store/login-slice";
-import Axios from "axios";
+import { useLogin } from "./useLogin";
+import { useSelector } from "react-redux";
 
 export const Login = () => {
 
-    const dispatch = useDispatch();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState({
-        incorrectPassword: false,
-        message: "",
-        passwordReset: "",
-    });
-
-    const toggleLoginModal = () => {
-        dispatch(loginActions.toggleLoginModal())
-    };
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        await Axios.post("http://localhost:4000/auth/login", {
-            email: email,
-            password: password,
-        })
-            .then(res => {
-                localStorage.setItem("token", res.data.token);
-                localStorage.setItem("info", JSON.stringify(res.data.response));
-                dispatch(loginActions.verifyLoginHandler({
-                    token: localStorage.getItem("token"),
-                    info: localStorage.getItem("info"),
-                }))
-            }).catch(err => {
-                console.log(err);
-                setErrorMessage({
-                    incorrectPassword: true,
-                    message: "Incorrect Username/Password. Please try again.",
-                    passwordReset: "Reset your password?"
-                });
-            });
-    };
+    const {
+        email,
+        setEmail,
+        password,
+        setPassword,
+        errorMessage,
+        setErrorMessage,
+        handleLogin,
+        toggleLoginModal
+    } = useLogin();
 
     useEffect(() => {
         handleLogin();
@@ -54,7 +28,10 @@ export const Login = () => {
                 <div className={styles.border}>
                     <div className={styles.login}>
                         <h1>LOGIN</h1>
-                        <form className={styles.input} onSubmit={handleLogin}>
+                        <form
+                            className={styles.input}
+                            onSubmit={(e) => handleLogin(e, email, password)}
+                        >
                             <div>
                                 <input
                                     className={styles.input}

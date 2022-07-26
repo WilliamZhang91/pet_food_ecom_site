@@ -20,11 +20,11 @@ export const Products = () => {
         <div className={styles.layout}>
             <div className={styles.title}>{category.charAt(0).toUpperCase() + category.slice(1)} Food</div>
             <div className={styles.filter}>
-                <div>{type.map(el => {
+                <div>{type.map((el, index) => {
                     return (
                         <button
                             id={el}
-                            key={Math.random()}
+                            key={index}
                             onClick={(e) => selectFilter(e)}
                             value={el}
                             className={styles.filterButton}
@@ -32,22 +32,22 @@ export const Products = () => {
                             {el.toUpperCase()}
                         </button>)
                 })}</div>
-                <div>{age.map(el => {
+                <div>{age.map((el, index)=> {
                     return (
                         <button
                             id={el}
-                            key={Math.random()}
+                            key={index}
                             onClick={(e) => selectFilter(e)}
                             value={el}
                             className={styles.filterButton}
                         >{el.toUpperCase()}
                         </button>)
                 })}</div>
-                <div>{health.map(el => {
+                <div>{health.map((el, index) => {
                     return (
                         <button
                             id={el}
-                            key={Math.random()}
+                            key={index}
                             onClick={(e) => selectFilter(e)}
                             value={el}
                             className={styles.filterButton}
@@ -55,11 +55,11 @@ export const Products = () => {
                             {el.toUpperCase()}
                         </button>)
                 })}</div>
-                <div>{brand.map(el => {
+                <div>{brand.map((el, index) => {
                     return (
                         <button
                             id={el}
-                            key={Math.random()}
+                            key={index}
                             onClick={(e) => selectFilter(e)}
                             value={el}
                             className={styles.filterButton}

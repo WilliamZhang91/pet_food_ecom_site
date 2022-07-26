@@ -3,7 +3,6 @@ import loginReducer from "../../store/login-slice"
 
 export const Home = () => {
 
-    console.log(loginReducer)
     return <div className={styles.margin}>
         <div className={styles.home}>
             <img className={styles.img} src="./home_page_dog.png" />

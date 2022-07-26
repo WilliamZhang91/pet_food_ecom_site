@@ -29,6 +29,11 @@ const loginSlice = createSlice({
             state.token = action.payload.token;
             state.info = action.payload.info;
         },
+        logoutHandler(state) {
+            state.isLoggedIn = false;
+            state.showLoginModal = false;
+            state.token = state.info = null;
+        }
     },
 });
 

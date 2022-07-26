@@ -4,6 +4,7 @@ import { PurchaseHistory } from "./purchaseHistory";
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useHandleScroll } from "../templates/useHandleScroll";
 import Axios from "axios";
 
 export const Profile = () => {

@@ -5,17 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { cartActions } from "../../store/cart-slice";
 import { loginActions } from "../../store/login-slice";
+import { useHandleScroll } from "./useHandleScroll";
 
 export const Header = () => {
 
+    const { scrollRef } = useHandleScroll();
     const dispatch = useDispatch();
     const showCart = useSelector(state => state.cart.showCart);
+    const { login } = useSelector(state => state)
     const navigate = useNavigate();
-    //const credentials = JSON.parse(info.info);
-    const token = useSelector(state => state.login.token);
-    //const credentials = useSelector(state => state.login.info[0].name);
+
     const [credentials, setCredentials] = useState(prevState => {
-        if (localStorage.getItem("token") === null) {
+        if (localStorage.getItem("token") === null || !localStorage.getItem("token")) {
             return prevState
         } else {
             console.log(JSON.parse(localStorage.getItem("info"))[0].name)
@@ -27,18 +28,19 @@ export const Header = () => {
         dispatch(cartActions.toggleCart());
     };
 
-    const toggleLoginModal = () => {
-        dispatch(loginActions.toggleLoginModal());
-    };
-
     const toggleRegisterModal = () => {
         dispatch(loginActions.toggleRegisterModal());
     };
 
     const logout = () => {
-        setCredentials(localStorage.clear());
+        localStorage.clear();
         navigate("/");
+        console.log(login);
     };
+
+    const toggleLoginModal = () => {
+        dispatch(loginActions.toggleLoginModal());
+    }
 
     useEffect(() => {
         setCredentials
@@ -53,7 +55,7 @@ export const Header = () => {
     }, [showCart, toggleCart]);
 
     return <>
-        <div className={styles.header}>
+        <div className={styles.header} ref={scrollRef}>
             <div className={styles.header1}>
                 <div>
                     <Link to="/">

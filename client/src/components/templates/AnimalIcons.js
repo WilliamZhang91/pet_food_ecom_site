@@ -1,20 +1,26 @@
 import styles from "./AnimalIcons.module.css";
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../store/products-slice";
+import { useHandleScroll } from "./useHandleScroll";
 import { categoryActions } from "../../store/category-slice";
 
 export const AnimalIcons = () => {
 
+    const { scrollRef } = useHandleScroll();
+
     const dispatch = useDispatch();
     const { category } = useSelector(state => state.category);
-    console.log(category)
 
     const selectCategory = (e) => {
+        if (window.pageYOffset < 500) {
+            const scrollToElement = () => scrollRef.current.scrollIntoView({ behavior: "smooth" });
+            scrollToElement();
+        }
         dispatch(categoryActions.selectCategory({
             animal: e.target.attributes.getNamedItem("value").value
-        }))
+        }));
     };
 
     useEffect(() => {
@@ -22,7 +28,7 @@ export const AnimalIcons = () => {
     }, [dispatch]);
 
     return <>
-        <div className={styles.animals}>
+        <div className={styles.animals} ref={scrollRef}>
             <Link to={`products`} className={styles.link}>
                 <button
                     className={styles.animal}

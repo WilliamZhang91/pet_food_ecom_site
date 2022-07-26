@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser');
 const nodemailer = require("nodemailer");
 app.use(bodyParser.json());
 require("dotenv").config();
@@ -62,11 +63,6 @@ router.post("/signup", [
 
 router.post("/login", async (req, res) => {
     const plainPassword = req.body.password;
-    const token = await jwt.sign({
-        email: req.body.email,
-    }, "use_env_to_hide_secret", {
-        expiresIn: 36000
-    });
     db.query("SELECT * FROM credentials WHERE email=?", [req.body.email], (error, response) => {
         if (error) {
             (error)
@@ -74,19 +70,23 @@ router.post("/login", async (req, res) => {
             array = [];
             const passwordCheck = bcrypt.compareSync(plainPassword, response[0].password)
             if (passwordCheck) {
-                console.log(response[0].password);
+                const token = jwt.sign({
+                    email: req.body.email,
+                }, process.env.JWT_SECRET, {
+                    expiresIn: 1
+                });
                 const customer_id = response[0].customer_id
-                //console.log(token)
                 array.push({
                     customer_id: customer_id,
                     token: token,
                     password: response[0].password
                 });
-                console.log(array)
-                return res.json({
-                    token,
-                    response,
-                });
+                res
+                    .cookie("token", token, {
+                        secure: false,
+                        httpOnly: true
+                    })
+                    .json({ message: "success", token, response })
             } else {
                 console.log(error);
             };
