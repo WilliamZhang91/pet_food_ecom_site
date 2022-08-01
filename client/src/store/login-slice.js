@@ -8,7 +8,7 @@ const loginSlice = createSlice({
         isLoggedIn: false,
         showLoginModal: false,
         showRegisterModal: false,
-        token: localStorage.getItem("token"),
+        isAdmin: false,
         info: localStorage.getItem("info"),
     },
     reducers: {
@@ -24,16 +24,29 @@ const loginSlice = createSlice({
         toggleChangeEmailModal(state) {
             state.showChangeEmailModal =!state.showChangeEmailModal;
         },
-        verifyLoginHandler(state, action) {
+        toggleLoginStatus(state) {
             state.isLoggedIn = true;
-            state.token = action.payload.token;
+        },
+        removeLoginStatus(state) {
+            state.isLoggedIn = false;
+        },
+        toggleAdminStatus(state) {
+            state.isAdmin = true;
+        },
+        removeAdminStatus(state) {
+            state.isAdmin = false;
+        },
+        clearInfo(state) {
+            state.info = "";
+        },
+        verifyLoginHandler(state, action) {
             state.info = action.payload.info;
         },
         logoutHandler(state) {
             state.isLoggedIn = false;
             state.showLoginModal = false;
             state.token = state.info = null;
-        }
+        },
     },
 });
 

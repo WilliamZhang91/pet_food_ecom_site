@@ -1,4 +1,5 @@
 import './App.css';
+import { useEffect } from 'react';
 import { Header } from './components/templates/Header';
 import { AnimalIcons } from './components/templates/AnimalIcons';
 import { Footer } from './components/templates/Footer';
@@ -13,6 +14,7 @@ import { ChangeEmail } from './components/authentication/ChangeEmail';
 import { Profile } from './components/pages/Profile';
 import { Checkout } from './components/pages/Checkout';
 import { AccountDetails } from './components/pages/AccountDetails';
+import { AdminDashboard } from './components/pages/AdminDashboard';
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
@@ -25,6 +27,12 @@ function App() {
   const showChangeEmailModal = useSelector(state => state.login.showChangeEmailModal);
   const { products } = useSelector(state => state.products);
 
+  const loginDetails = useSelector(state => state.login);
+
+  useEffect(() => {
+    console.log(loginDetails)
+  })
+
   return <div className="App">
     <Header />
     <AnimalIcons />
@@ -36,17 +44,12 @@ function App() {
     <main>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path="products"
-          element={
-            products.length !== 0 ?
-              (<Products />) : (<Navigate replace to="/" />)
-          }
-        />
+        <Route path="products" element={products.length !== 0 ? (<Products />) : (<Navigate replace to="/" />)} />
         <Route path="products/:pet/:product_id" element={<IndividualProduct />} />
         <Route path="profile/:id" element={<Profile />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="account-details" element={<AccountDetails />} />
+        <Route path="profile/:id/dashboard" element={<AdminDashboard />} />
       </Routes>
     </main>
     <Footer />

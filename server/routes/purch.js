@@ -29,22 +29,6 @@ router.post("/cart", (req, res) => {
     res.send({ message: "success" });
 });
 
-//get purchase histroy
-//router.post("/purchases", (req, res) => {
-//    db.query("SELECT * FROM purchases WHERE ?", 
-//    {
-//        customer_id: req.body.customer_id
-//    },    
-//    (err, result) => {
-//        if (err) {
-//            console.log(err)
-//        } else {
-//            res.send(result);
-//        }
-//    });
-//});
-
-//join purchase history with product details
 router.post("/purchases", (req, res) => {
     db.query("SELECT * FROM purchases inner join dog_food on dog_food.product_id = purchases.product_id where ?", {
         customer_id: req.body.customer_id

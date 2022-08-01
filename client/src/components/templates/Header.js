@@ -6,23 +6,16 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { cartActions } from "../../store/cart-slice";
 import { loginActions } from "../../store/login-slice";
 import { useHandleScroll } from "./useHandleScroll";
+import { useLogout } from "../authentication/useLogout";
 
 export const Header = () => {
 
     const { scrollRef } = useHandleScroll();
     const dispatch = useDispatch();
     const showCart = useSelector(state => state.cart.showCart);
-    const { login } = useSelector(state => state)
+    const { login } = useSelector(state => state);
     const navigate = useNavigate();
-
-    const [credentials, setCredentials] = useState(prevState => {
-        if (localStorage.getItem("token") === null || !localStorage.getItem("token")) {
-            return prevState
-        } else {
-            console.log(JSON.parse(localStorage.getItem("info"))[0].name)
-            return prevState = JSON.parse(localStorage.getItem("info"))[0].name
-        };
-    });
+    const { handleLogout } = useLogout();
 
     const toggleCart = () => {
         dispatch(cartActions.toggleCart());
@@ -32,19 +25,20 @@ export const Header = () => {
         dispatch(loginActions.toggleRegisterModal());
     };
 
+    const credentials = useSelector(state => {
+        return localStorage.getItem("info") && JSON.parse(state.login.info)[0].name
+    });
+
     const logout = () => {
         localStorage.clear();
         navigate("/");
         console.log(login);
+        handleLogout();
     };
 
     const toggleLoginModal = () => {
         dispatch(loginActions.toggleLoginModal());
     }
-
-    useEffect(() => {
-        setCredentials
-    }, []);
 
     useEffect(() => {
         if (showCart) {
@@ -71,7 +65,7 @@ export const Header = () => {
                         {
                             localStorage.getItem("info") !== null ?
                                 <Link to={`profile/${credentials}`}>
-                                    <button>PROFILE</button>
+                                    <button>ACCOUNT</button>
                                 </Link>
                                 :
                                 <button onClick={toggleLoginModal}>
