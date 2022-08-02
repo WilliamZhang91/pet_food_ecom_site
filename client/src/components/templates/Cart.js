@@ -16,7 +16,7 @@ export const Cart = () => {
     
     totalPrice = price.reduce((prevAmount, currentAmount) => {
         return prevAmount + currentAmount
-    }, []);
+    }, 0);
     
     const toggleCart = () => {
         dispatch(cartActions.toggleCart());
@@ -59,7 +59,6 @@ export const Cart = () => {
                                 />
                                 <h3>{cartItem.name}</h3>
                                 <h3>{cartItem.brand}</h3>
-                                <h3>${totalPrice}.00</h3>
                                 <h3>Quantity: {cartItem.quantity}</h3>
                                 <div className={styles.operatorButton}>
                                     <button onClick={removeItemFromCart}>-</button>
@@ -73,7 +72,7 @@ export const Cart = () => {
                                 ?
                                 <>
                                     <Link to="/checkout">
-                                        <button>
+                                        <button onClick={toggleCart}>
                                             Proceed to Checkout
                                         </button>
                                     </Link>

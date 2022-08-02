@@ -18,9 +18,5 @@ export const useLogout = () => {
             .catch(err => console.log(err));
     }
 
-    //useEffect(() => {
-    //    dispatch(loginActions.clearInfo());
-    //}, [handleLogout])
-
     return { handleLogout }
 }

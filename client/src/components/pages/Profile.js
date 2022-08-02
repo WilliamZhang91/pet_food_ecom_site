@@ -11,7 +11,6 @@ export const Profile = () => {
 
     const loginDetails = useSelector(state => state.login);
     const isAdmin = JSON.parse((loginDetails.isAdmin));
-    console.log(isAdmin)
     console.log(JSON.parse(loginDetails.info)[0].role_id);
     const [purchaseHistory, setPurhcaseHistory] = useState([]);
     const credentials = JSON.parse(loginDetails.info);

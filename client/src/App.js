@@ -15,6 +15,7 @@ import { Profile } from './components/pages/Profile';
 import { Checkout } from './components/pages/Checkout';
 import { AccountDetails } from './components/pages/AccountDetails';
 import { AdminDashboard } from './components/pages/AdminDashboard';
+import { PurchaseConfirmation } from './components/pages/PurchaseConfirmation';
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
@@ -50,6 +51,7 @@ function App() {
         <Route path="checkout" element={<Checkout />} />
         <Route path="account-details" element={<AccountDetails />} />
         <Route path="profile/:id/dashboard" element={<AdminDashboard />} />
+        <Route path="confirm" element={<PurchaseConfirmation />} />
       </Routes>
     </main>
     <Footer />

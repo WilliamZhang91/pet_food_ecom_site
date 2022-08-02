@@ -23,13 +23,6 @@ CREATE TABLE credentials (
   PRIMARY KEY (customer_id)
 ); 
 
-CREATE TABLE role (
-  role_id int,
-  description varchar(20),
-  PRIMARY KEY (role_id),
-  CONSTRAINT role_id_ibfk FOREIGN KEY (role_id) REFERENCES credentials (role_id)
-);
-
 CREATE TABLE purchases (
   purchase_id INT DEFAULT NULL,
   customer_id INT DEFAULT NULL,
@@ -70,15 +63,13 @@ INSERT INTO dog_food (
 (13,"Black Hawk","dry","adult","skin",58,"/images/dog_food/food10.jpg","dog","Original Adult Large Breed Chicken Dry Dog Food"),
 (14,"Black Hawk","wet","puppy","immune",65,"/images/dog_food/food11.jpg","dog","Original Adult Fish & Potato Dry Dog Food");
 
-INSERT INTO credentials (
- customer_id,
- name, 
- email,
- password,
- role_id, 
-) VALUES (1, "avast", "avast@email.com", "Password", "2");
+CREATE TABLE authorisation (
+role_id INT NOT NULL AUTO_INCREMENT,
+description VARCHAR(100) DEFAULT NULL,
+PRIMARY KEY (role_id)
+);
 
-INSERT INTO role (
+INSERT INTO authorisation (
   role_id,
   description
 ) VALUES (1, "user"),

@@ -26,7 +26,7 @@ export const useLogin = () => {
 
     const handleLogin = async (e, email, password) => {
         e.preventDefault();
-        await Axios.post("http://localhost:4000/auth/login",
+        return await Axios.post("http://localhost:4000/auth/login",
             { email, password },
             { headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } },
             { withCredentials: true })
