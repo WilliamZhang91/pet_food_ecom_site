@@ -33,7 +33,7 @@ const loginSlice = createSlice({
             state.isLoggedIn = false;
             state.showLoginModal = false;
             state.token = state.info = null;
-        }
+        },
     },
 });
 

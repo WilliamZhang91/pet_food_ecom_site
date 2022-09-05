@@ -3,3 +3,7 @@
 /server/.env
 .env
 networking
+.gitignore
+.dockerignore
+/client/src/__test__
+/client/src/test-util.js
