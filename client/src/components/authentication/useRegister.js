@@ -91,19 +91,19 @@ export const useRegister = () => {
             setEmailErrorMessage({ formError: false, message: "" });
             setPasswordErrorMessage({ formError: false, message: "" });
             setConfirmPasswordErrorMessage({ formError: false, message: "" });
-            await Axios.post("http://localhost:4000/auth/signup", {
-                name: name,
-                email: email,
-                password: password,
-            })
+            return await Axios.post("http://localhost:4000/auth/signup",
+                { name: name, email: email, password: password },
+                { headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } },
+                { withCredentials: true })
                 .then(res => {
-                    console.log(res);
+                    console.log({ res: res });
+                    console.log("account created");
                     handleLogin(e, email, password);
                 })
                 .catch(err => {
                     console.log(err);
                     setErrorMessage("Sign up failed");
-                })
+                });
         } else {
             console.log("failed");
         };
@@ -119,17 +119,17 @@ export const useRegister = () => {
         setPassword,
         setConfirmPassword,
         toggleRegisterModal,
-        confirmPassword, 
+        confirmPassword,
         setConfirmPassword,
-        nameErrorMessage, 
+        nameErrorMessage,
         setNameErrorMessage,
-        emailErrorMessage, 
+        emailErrorMessage,
         setEmailErrorMessage,
-        passwordErrorMessage, 
+        passwordErrorMessage,
         setPasswordErrorMessage,
         confirmPasswordErrorMessage,
         setConfirmPasswordErrorMessage,
-        errorMessage, 
+        errorMessage,
         setErrorMessage,
         handleRegister,
     }

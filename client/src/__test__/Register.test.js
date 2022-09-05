@@ -86,4 +86,6 @@ describe("Test the Register component", () => {
     //    const buttonList = await screen.findAllByRole("button");
     //    expect(buttonList).toHaveLength(1);
     //});
+
+    //test("should remain logged in on page refresh")
 });

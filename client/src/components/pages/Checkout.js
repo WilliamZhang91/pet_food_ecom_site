@@ -1,8 +1,12 @@
 import { useSelector } from "react-redux";
 import Axios from "axios";
-import styles from "./Products.module.css"
+import styles from "./Products.module.css";
+import { PurchaseConfirmation } from "./PurchaseConfirmation";
+import { useNavigate } from "react-router-dom";
 
 export const Checkout = () => {
+
+    const navigate = useNavigate();
 
     const cart = useSelector(state => state.cart.cart);
     console.log(cart);
@@ -30,6 +34,7 @@ export const Checkout = () => {
             .then(res => {
                 console.log(res);
                 //const array = JSON.parse(res.config.data).detail
+                navigate("/confirm");
             })
             .catch(err => console.log(err));
     };

@@ -1,7 +1,6 @@
 /client/node_modules
 /server/node_modules
 /server/.env
-.env
 networking
 .gitignore
 .dockerignore

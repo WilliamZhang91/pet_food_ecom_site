@@ -10,6 +10,8 @@ import Axios from "axios";
 export const Profile = () => {
 
     const loginDetails = useSelector(state => state.login);
+    const isAdmin = JSON.parse((loginDetails.isAdmin));
+    console.log(JSON.parse(loginDetails.info)[0].role_id);
     const [purchaseHistory, setPurhcaseHistory] = useState([]);
     const credentials = JSON.parse(loginDetails.info);
     //console.log(credentials[0].customer_id)
@@ -44,11 +46,21 @@ export const Profile = () => {
             <div className={styles.customer}>
                 <h2>{JSON.parse(loginDetails.info)[0].name.replace(/\b\w/g, l => l.toUpperCase())}</h2>
                 <h3>{JSON.parse(loginDetails.info)[0].email}</h3>
-                <Link to="/account-details">
-                    <button>Manage Account</button>
-                </Link>
+                <div>
+                    <Link to="/account-details">
+                        <button style={{ margin: "0 0px", fontSize: "25px" }}>Manage Account</button>
+                    </Link>
+                    {
+                        JSON.parse(loginDetails.info)[0].role_id === 2 ?
+                            <Link to={`/profile/${credentials[0].name}/dashboard`}>
+                                <button style={{ margin: "0 20px", fontSize: "25px" }}>Dashboard</button>
+                            </Link>
+                            :
+                            null
+                    }
+                </div>
                 <div className={styles.flex}>
-                    <h3 className={styles.title}>Purchase History</h3>
+                    <h1 className={styles.title} style={{ width: "100%" }}>Purchase History</h1>
                     {purchaseHistory && purchaseHistory.map((item, index) => {
                         const {
                             product_id,

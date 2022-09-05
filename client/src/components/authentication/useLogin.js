@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginActions } from "../../store/login-slice";
 import { useNavigate } from "react-router-dom";
@@ -16,36 +16,37 @@ export const useLogin = () => {
         passwordReset: "",
     });
 
-    const [credentials, setCredentials] = useState(prevState => {
-        if (localStorage.getItem("token") === null) {
-            return prevState
-        } else {
-            return prevState = JSON.parse(localStorage.getItem("info"))[0].name
-        };
+    const credentials = useSelector(state => {
+        return localStorage.getItem("info") && JSON.parse(state.login.info)[0].name
     });
 
     const toggleLoginModal = () => {
-        dispatch(loginActions.toggleLoginModal())
+        dispatch(loginActions.toggleLoginModal());
     };
 
     const handleLogin = async (e, email, password) => {
         e.preventDefault();
-        await Axios.post("http://localhost:4000/auth/login", {
-            email: email,
-            password: password,
-        })
+        return await Axios.post("http://localhost:4000/auth/login",
+            { email, password },
+            { headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } },
+            { withCredentials: true })
             .then(res => {
-                console.log(res)
-                localStorage.setItem("token", res.data.token);
-                localStorage.setItem("info", JSON.stringify(res.data.response));
+                localStorage.setItem("info", JSON.stringify(res.data.array));
+
                 dispatch(loginActions.verifyLoginHandler({
-                    token: localStorage.getItem("token"),
                     info: localStorage.getItem("info"),
                 }));
+
+                dispatch(loginActions.toggleLoginStatus());
+
                 toggleLoginModal();
-                navigate(`/profile/${credentials}`)
+
+                navigate(`/profile/${credentials}`);
+
             }).catch(err => {
-                console.log(err);
+
+                console.log("error at handleLogin");
+
                 setErrorMessage({
                     incorrectPassword: true,
                     message: "Incorrect Username/Password. Please try again.",
