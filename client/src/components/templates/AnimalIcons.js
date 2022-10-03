@@ -1,5 +1,5 @@
 import styles from "./AnimalIcons.module.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../store/products-slice";
