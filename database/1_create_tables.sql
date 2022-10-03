@@ -75,7 +75,7 @@ INSERT INTO authorisation (
 ) VALUES (1, "user"),
 (2, "admin")
 
-GRANT ALL ON *.* TO 'root';
+-- GRANT ALL ON *.* TO 'root';
 --GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
 --FLUSH PRIVILEGES;
 
